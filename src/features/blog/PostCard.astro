@@ -1,0 +1,20 @@
+---
+interface Props {
+    href: string;
+    publicationDate: Date;
+    title: string;
+}
+
+const props = Astro.props;
+
+// Format date as YYYY-MM-DD
+const publicationDate = props.publicationDate.toISOString().slice(0, 10);
+---
+
+<a href={props.href} class="w-full p-2 flex flex-col gap-2 hover:bg-white hover:text-black hover:font-semibold">
+    <div class="w-full aspect-square border"></div>
+    <div>
+        <p class="text-xs">{publicationDate}</p>
+        <p>{props.title}</p>
+    </div>
+</a>

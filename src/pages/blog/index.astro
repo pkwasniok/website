@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import RootLayout from "../../layouts/RootLayout.astro";
+import Section from "../../features/components/Section.astro";
+import PostCard from "../../features/blog/PostCard.astro";
+
+const posts = await getCollection("blog");
+---
+
+<RootLayout
+    title="Blog"
+    breadcrumbs={[
+        { title: "home", href: "/" },
+        { title: "blog", href: "/blog" },
+    ]}
+>
+    <Section title="// 03.01 All posts">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+            {posts.map((post) => (
+                <PostCard
+                    href={`/blog/${post.slug}`}
+                    title={post.data.title}
+                    publicationDate={post.data.publicationDate}
+                />
+            ))}
+        </div>
+    </Section>
+</RootLayout>

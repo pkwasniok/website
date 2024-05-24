@@ -1,7 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import RootLayout from "../layouts/RootLayout.astro";
 import Section from "../features/components/Section.astro";
 import Shield from "../features/components/Shield.astro";
+import NewestPostCard from "../features/blog/NewestPostCard.astro";
 
 const links = {
 	upwork: "https://www.upwork.com/freelancers/~013f291d0612995d23?mp_source=share",
@@ -15,9 +17,12 @@ const contact = {
 	discord: "pkwasniok",
 	signal: "pkwasniok.42",
 }
+
+const posts = await getCollection("blog");
+const newestPost = posts[0];
 ---
 
-<RootLayout title="Blog">
+<RootLayout breadcrumbs={[{ title: "home", href: "/" }]}>
 	<Section title="// 01 Links">
 		<div class="flex flex-row items-center gap-2 flex-wrap">
 			<Shield icon="upwork" href={links.upwork}>Upwork</Shield>
@@ -35,7 +40,16 @@ const contact = {
 		</p>
 	</Section>
 
-	<Section title="// 03 Contact">
+	<Section title="// 03 Blog | Featured post" href="/blog">
+		<NewestPostCard
+			href={`/blog/${newestPost.slug}`}
+			title={newestPost.data.title}
+			description={newestPost.data.description}
+			publicationDate={newestPost.data.publicationDate}
+		/>
+	</Section>
+
+	<Section title="// 04 Contact">
 		<div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 			<div class="flex flex-col items-start">
 				<div class="text-sm">Email</div>

@@ -1,0 +1,36 @@
+---
+import { getCollection, getEntryBySlug } from "astro:content";
+import RootLayout from "../../layouts/RootLayout.astro"
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+    }))
+}
+
+const { slug } = Astro.params;
+
+const post = await getEntryBySlug("blog", slug);
+const { Content } = await post.render();
+
+// Format publication date to YYYY-MM-DD string
+const publicationDate = post.data.publicationDate.toISOString().slice(0, 10);
+---
+
+<RootLayout
+    title={post.data.title}
+    breadcrumbs={[
+        { title: "home", href: "/" },
+        { title: "blog", href: "/blog" },
+        { title: post.slug, href: `/blog/${post.slug}` },
+    ]}
+>
+    <div class="flex flex-col gap-1">
+        <h1 class="text-3xl font-semibold">{post.data.title}</h1>
+        <p class="text-sm">{publicationDate}</p>
+    </div>
+
+    <Content/>
+</RootLayout>

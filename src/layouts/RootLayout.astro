@@ -1,6 +1,7 @@
 ---
 interface Props {
     title?: string;
+    breadcrumbs: { title: string, href: string }[];
 }
 
 const props = Astro.props;
@@ -22,15 +23,17 @@ if (props.title != undefined) {
 
     <body class="min-h-[100vh] flex flex-col items-center p-4 bg-black text-white">
         <header class="max-w-[800px] w-full flex flex-row items-center justify-between">
-            <div>
+            <a href="/">
                 <h1 class="text-3xl font-bold">Patryk Kwaśniok</h1>
                 <p class="uppercase font-bold">Software developer</p>
-            </div>
-
-            {props.title && (
-                <p class="uppercase font-semibold text-sm">{props.title}</p>
-            )}
+            </a>
         </header>
+
+        <div class="max-w-[800px] w-full text-xs mt-1">
+            {props.breadcrumbs.map((breadcrumb) => (
+                <a href={breadcrumb.href} class="hover:font-semibold">{breadcrumb.title}</a><span>{"/"}</span>
+            ))}
+        </div>
 
         <div class="min-h-14"/>
 
