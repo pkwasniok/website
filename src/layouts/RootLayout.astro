@@ -1,0 +1,48 @@
+---
+interface Props {
+    title?: string;
+}
+
+const props = Astro.props;
+
+let title = "Patryk Kwaśniok"
+if (props.title != undefined) {
+    title = `${props.title} | Patryk Kwaśniok`
+}
+---
+
+<html lang="en">
+    <head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+    </head>
+
+    <body class="min-h-[100vh] flex flex-col items-center p-4 bg-black text-white">
+        <header class="max-w-[800px] w-full flex flex-row items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold">Patryk Kwaśniok</h1>
+                <p class="uppercase font-bold">Software developer</p>
+            </div>
+
+            {props.title && (
+                <p class="uppercase font-semibold text-sm">{props.title}</p>
+            )}
+        </header>
+
+        <div class="min-h-14"/>
+
+        <main class="max-w-[800px] w-full flex flex-col items-start gap-14">
+            <slot/>
+        </main>
+
+        <div class="flex-1 min-h-14"/>
+
+        <footer class="max-w-[800px] w-full text-xs">
+            <p>Powered by 🧉</p>
+            <p>Patryk Kwaśniok © 2024</p>
+        </footer>
+    </body>
+</html>

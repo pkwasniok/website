@@ -1,4 +1,5 @@
 ---
+import RootLayout from "../layouts/RootLayout.astro";
 import Section from "../features/components/Section.astro";
 import Shield from "../features/components/Shield.astro";
 
@@ -16,88 +17,59 @@ const contact = {
 }
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Patryk Kwaśniok</title>
-	</head>
+<RootLayout title="Blog">
+	<Section title="// 01 Links">
+		<div class="flex flex-row items-center gap-2 flex-wrap">
+			<Shield icon="upwork" href={links.upwork}>Upwork</Shield>
+			<Shield icon="github" href={links.github}>Github</Shield>
+			<Shield icon="linkedin" href={links.linkedin}>Linkedin</Shield>
+			<Shield icon="x" href={links.twitter}>Twitter</Shield>
+		</div>
+	</Section>
 
-	<body class="flex flex-col items-center p-4 bg-black text-white">
-		<div class="max-w-[800px] w-full flex flex-col gap-14 items-start">
-			<div id="header">
-				<h1 class="text-3xl font-bold">Patryk Kwaśniok</h1>
-				<span class="uppercase font-bold">Software developer</span>
+	<Section title="// 02 About">
+		<p class="text-justify">
+			Hello! My name is Patryk and I’m software developer from Poland. I mostly work
+			with javascript-based technologies like React and Node but I also have some
+			experience in dekstop applications and embedded systems.
+		</p>
+	</Section>
+
+	<Section title="// 03 Contact">
+		<div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+			<div class="flex flex-col items-start">
+				<div class="text-sm">Email</div>
+
+				<div
+					title="Click to copy"
+					onclick={"navigator.clipboard.writeText(this.innerText)"}
+					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
+				>
+					{contact.email}
+				</div>
 			</div>
 
-			<Section title="// 01 Links">
-				<div class="flex flex-row items-center gap-2 flex-wrap">
-					<Shield icon="upwork" href={links.upwork}>Upwork</Shield>
-					<Shield icon="github" href={links.github}>Github</Shield>
-					<Shield icon="linkedin" href={links.linkedin}>Linkedin</Shield>
-					<Shield icon="x" href={links.twitter}>Twitter</Shield>
+			<div class="flex flex-col items-start">
+				<div class="text-sm">Signal</div>
+				<div
+					title="Click to copy"
+					onclick={"navigator.clipboard.writeText(this.innerText)"}
+					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
+				>
+					{contact.signal}
 				</div>
-			</Section>
+			</div>
 
-			<Section title="// 02 About">
-				<p class="text-justify">
-					Hello! My name is Patryk and I’m software developer from Poland. I mostly work
-					with javascript-based technologies like React and Node but I also have some
-					experience in dekstop applications and embedded systems.
-				</p>
-			</Section>
-
-			<Section title="// 03 Contact">
-				<div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-					<div class="flex flex-col items-start">
-						<div class="text-sm">Email</div>
-
-						<div
-							title="Click to copy"
-							onclick={"navigator.clipboard.writeText(this.innerText)"}
-							class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-						>
-							{contact.email}
-						</div>
-					</div>
-
-					<div class="flex flex-col items-start">
-						<div class="text-sm">Signal</div>
-						<div
-							title="Click to copy"
-							onclick={"navigator.clipboard.writeText(this.innerText)"}
-							class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-						>
-							{contact.signal}
-						</div>
-					</div>
-
-					<div class="flex flex-col items-start">
-						<div class="text-sm">Discord</div>
-						<div
-							title="Click to copy"
-							onclick={"navigator.clipboard.writeText(this.innerText)"}
-							class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-						>
-							{contact.discord}
-						</div>
-					</div>
+			<div class="flex flex-col items-start">
+				<div class="text-sm">Discord</div>
+				<div
+					title="Click to copy"
+					onclick={"navigator.clipboard.writeText(this.innerText)"}
+					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
+				>
+					{contact.discord}
 				</div>
-			</Section>
-
-			<div id="footer" class="mt-10 w-full flex flex-col items-start">
-				<div class="text-xs">Powered by 🧉</div>
-				<div class="text-xs">Patryk Kwaśniok © 2024</div>
 			</div>
 		</div>
-	</body>
-</html>
-
-<style>
-	@font-face {
-		font-family: Inconsolata;
-		src: url("/fonts/Inconsolata.ttf");
-	}
-</style>
+	</Section>
+</RootLayout>
