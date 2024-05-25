@@ -9,7 +9,7 @@ interface Props {
 const { href, icon } = Astro.props;
 ---
 
-<a href={href} class="px-2 py-1 flex flex-row gap-2 items-center border hover:bg-white hover:font-semibold text-sm hover:text-black cursor-pointer">
+<a href={href} class="px-2 py-1 flex flex-row gap-2 items-center border hover:bg-gray-200 border-gray-200 hover:font-semibold text-sm hover:text-black cursor-pointer">
     {icon && (
         <Icon name={icon}/>
     )}
