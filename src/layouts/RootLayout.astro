@@ -21,7 +21,7 @@ if (props.title != undefined) {
 		<title>{title}</title>
     </head>
 
-    <body class="min-h-[100vh] flex flex-col items-center p-4 bg-black text-gray-200">
+    <body class="min-h-[100vh] flex flex-col items-center p-4 bg-dark text-light">
         <header class="max-w-[800px] w-full flex flex-row items-center justify-between">
             <a href="/">
                 <h1 class="text-3xl font-bold">Patryk Kwaśniok</h1>
@@ -29,7 +29,7 @@ if (props.title != undefined) {
             </a>
         </header>
 
-        <div class="max-w-[800px] w-full text-xs mt-1 text-gray-400">
+        <div class="max-w-[800px] w-full text-xs mt-1 text-gray">
             {props.breadcrumbs.map((breadcrumb) => (
                 <a href={breadcrumb.href} class="hover:font-semibold">{breadcrumb.title}</a><span>{"/"}</span>
             ))}
@@ -43,9 +43,15 @@ if (props.title != undefined) {
 
         <div class="flex-1 min-h-14"/>
 
-        <footer class="max-w-[800px] w-full text-xs text-gray-400">
-            <p>Powered by 🧉</p>
-            <p>Patryk Kwaśniok © 2024</p>
+        <footer class="max-w-[800px] w-full text-xs text-gray flex flex-col sm:flex-row items-start sm:items-center justify-between">
+            <div class="flex flex-col">
+                <p>Powered by 🧉</p>
+                <p>Patryk Kwaśniok © 2024</p>
+            </div>
+
+            <div>
+                <p>kwasniokpatryk@gmail.com</p>
+            </div>
         </footer>
     </body>
 </html>

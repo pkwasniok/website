@@ -5,6 +5,11 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Inconsolata"],
+			},
+			colors: {
+				light: "#f0f0f0",
+				dark: "#080808",
+				gray: "#6b7280",
 			}
 		},
 	},
