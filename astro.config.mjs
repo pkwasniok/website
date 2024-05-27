@@ -6,7 +6,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://pkwasniok.xyz",
+  site: "https://kwasniokpatryk.pl",
   output: "static",
   prefetch: {
     prefetchAll: true
