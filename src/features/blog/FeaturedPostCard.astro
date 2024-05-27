@@ -14,11 +14,13 @@ const publicationDate = props.publicationDate.toISOString().slice(0, 10);
 
 <a href={props.href} class="w-full flex flex-row gap-4 p-2 hover:bg-light hover:text-dark hover:border-solid hover:border-light hover:font-semibold cursor-pointer border border-dashed border-gray">
     <div class="w-[128px] aspect-square border border-light"></div>
-    <div class="flex-1 flex flex-col gap-2">
+
+    <div class="flex-1 flex flex-col gap-1">
         <div class="w-full flex flex-col sm:flex-row items-start sm:items-center justify-between">
             <p>{props.title}</p>
-            <p class="text-xs sm:text-sm">{publicationDate}</p>
+            <p class="text-xs sm:text-sm text-gray">{publicationDate}</p>
         </div>
+
         <p class="text-sm">{props.description}</p>
     </div>
 </a>

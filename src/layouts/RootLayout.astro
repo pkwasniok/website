@@ -18,6 +18,7 @@ if (props.title != undefined) {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
+        <link rel="sitemap" href="/sitemap-index.xml">
 		<title>{title}</title>
     </head>
 
@@ -27,6 +28,10 @@ if (props.title != undefined) {
                 <h1 class="text-3xl font-bold">Patryk Kwaśniok</h1>
                 <p class="uppercase font-bold">Software developer</p>
             </a>
+
+            <div class="hidden sm:flex p-2 border-2 border-dashed border-red-400 text-xs font-bold text-red-400 items-center gap-2">
+                This page is under construction
+            </div>
         </header>
 
         <div class="max-w-[800px] w-full text-xs mt-1 text-gray">

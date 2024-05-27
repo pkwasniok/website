@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import RootLayout from "../layouts/RootLayout.astro";
 import Section from "../features/components/Section.astro";
 import Shield from "../features/components/Shield.astro";
-import NewestPostCard from "../features/blog/NewestPostCard.astro";
+import FeaturedPostCard from "../features/blog/FeaturedPostCard.astro";
 
 const links = {
 	upwork: "https://www.upwork.com/freelancers/~013f291d0612995d23?mp_source=share",
@@ -41,7 +41,7 @@ const newestPost = posts[0];
 	</Section>
 
 	<Section title="// 03 Blog | Featured post" href="/blog">
-		<NewestPostCard
+		<FeaturedPostCard
 			href={`/blog/${newestPost.slug}`}
 			title={newestPost.data.title}
 			description={newestPost.data.description}
