@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pkwasniok.xyz/sitemap-index.xml
+Sitemap: https://kwasniokpatryk.pl/sitemap-index.xml
