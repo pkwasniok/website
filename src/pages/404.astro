@@ -1,0 +1,17 @@
+---
+import RootLayout from "@layouts/RootLayout.astro";
+---
+
+<RootLayout 
+    breadcrumbs={[
+        { title: "home", href: "/" },
+        { title: "error", href: "" },
+        { title: "404", href: "" },
+    ]}
+>
+    <div class="flex flex-col gap-1 text-sm">
+        <div class="-sm text-red-400">[ERROR] Don't panic. It's just error 404 (Not found).</div>
+        <div class="-sm text-red-400">[ERROR] Your computer is trying to access resource that doesn't exists. It shouldn't.</div>
+        <div>$ Return to home page? [<a href="/" class="font-semibold hover:font-bold underline">YES</a>/NO]</div>
+    </div>
+</RootLayout>

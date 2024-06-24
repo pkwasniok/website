@@ -1,12 +1,12 @@
 ---
-import { getCollection, getEntryBySlug } from "astro:content";
-import RootLayout from "../../layouts/RootLayout.astro"
-import Section from "../../features/components/Section.astro";
+import blog from "@scripts/blog";
+import RootLayout from "@layouts/RootLayout.astro"
+import Section from "@features/components/Section.astro";
 
-import "../../styles/article.css"
+import "@styles/article.css"
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await blog.getAllPosts();
 
     return posts.map((post) => ({
         params: { slug: post.slug },
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const post = await getEntryBySlug("blog", slug);
+const post = (await blog.getPostBySlug(slug))!;
 const { Content, headings } = await post.render();
 
 // Format publication date to YYYY-MM-DD string
@@ -46,7 +46,7 @@ const publicationDate = post.data.publicationDate.toISOString().slice(0, 10);
     </Section>
 
     <Section title="// 03.xx.03 Article">
-        <article>
+        <article id="article">
             <Content/>
         </article>
     </Section>

@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
-import RootLayout from "../../layouts/RootLayout.astro";
-import Section from "../../features/components/Section.astro";
-import PostCard from "../../features/blog/PostCard.astro";
+import blog from "@scripts/blog"
+import RootLayout from "@layouts/RootLayout.astro";
+import Section from "@features/components/Section.astro";
+import PostCard from "@features/blog/PostCard.astro";
 
-const posts = await getCollection("blog");
+const posts = await blog.getAllPosts();
 ---
 
 <RootLayout
@@ -14,15 +14,29 @@ const posts = await getCollection("blog");
         { title: "blog", href: "/blog" },
     ]}
 >
-    <Section title="// 03.01 All posts">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
-            {posts.map((post) => (
-                <PostCard
-                    href={`/blog/${post.slug}`}
-                    title={post.data.title}
-                    publicationDate={post.data.publicationDate}
-                />
-            ))}
+    {(posts.length == 0) && (
+        <div class="flex flex-col gap-1">
+            <div class="w-full text-sm text-yellow-400">
+                [INFO] No blog posts available. Please check again later.
+            </div>
+
+            <div class="text-sm">
+                $ Return to home page? [<a href="/" class="font-semibold underline hover:font-bold">YES</a>/NO]
+            </div>
         </div>
-    </Section>
+    )}
+
+    {(posts.length > 0) && (
+        <Section title="// 03.01 All posts">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2">
+                {posts.map((post) => (
+                    <PostCard
+                        href={`/blog/${post.slug}`}
+                        title={post.data.title}
+                        publicationDate={post.data.publicationDate}
+                    />
+                ))}
+            </div>
+        </Section>
+    )}
 </RootLayout>

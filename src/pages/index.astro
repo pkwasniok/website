@@ -1,15 +1,16 @@
 ---
-import { getCollection } from "astro:content";
-import RootLayout from "../layouts/RootLayout.astro";
-import Section from "../features/components/Section.astro";
-import Shield from "../features/components/Shield.astro";
-import FeaturedPostCard from "../features/blog/FeaturedPostCard.astro";
+import blog from "@scripts/blog";
+import RootLayout from "@layouts/RootLayout.astro";
+import Section from "@features/components/Section.astro";
+import Shield from "@features/components/Shield.astro";
+import FeaturedPostCard from "@features/blog/FeaturedPostCard.astro";
 
 const links = {
 	upwork: "https://www.upwork.com/freelancers/~013f291d0612995d23?mp_source=share",
 	github: "https://github.com/pkwasniok",
-	linkedin: "https://www.linkedin.com/in/patryk-kwa%C5%9Bniok-728614215/",
+	linkedin: "https://www.linkedin.com/in/patryk-kwa%C5%9Bniok-728614215",
 	twitter: "https://x.com/pkwasniok",
+	youtube: "https://www.youtube.com/@pkwasniok",
 }
 
 const contact = {
@@ -18,8 +19,7 @@ const contact = {
 	signal: "pkwasniok.42",
 }
 
-const posts = await getCollection("blog");
-const newestPost = posts[0];
+const featuredPost = await blog.getFeaturedPost();
 ---
 
 <RootLayout breadcrumbs={[{ title: "home", href: "/" }]}>
@@ -29,6 +29,7 @@ const newestPost = posts[0];
 			<Shield icon="github" href={links.github}>Github</Shield>
 			<Shield icon="linkedin" href={links.linkedin}>Linkedin</Shield>
 			<Shield icon="x" href={links.twitter}>Twitter</Shield>
+			<Shield icon="youtube" href={links.youtube}>Youtube</Shield>
 		</div>
 	</Section>
 
@@ -41,12 +42,20 @@ const newestPost = posts[0];
 	</Section>
 
 	<Section title="// 03 Blog | Featured post" href="/blog">
-		<FeaturedPostCard
-			href={`/blog/${newestPost.slug}`}
-			title={newestPost.data.title}
-			description={newestPost.data.description}
-			publicationDate={newestPost.data.publicationDate}
-		/>
+		{featuredPost && (
+			<FeaturedPostCard
+				href={`/blog/${featuredPost.slug}`}
+				title={featuredPost.data.title}
+				description={featuredPost.data.description}
+				publicationDate={featuredPost.data.publicationDate}
+			/>
+		)}
+
+		{!featuredPost && (
+			<div class="h-[128px] border border-gray border-dashed text-sm flex items-center justify-center text-gray">
+				No blog posts available. Please check again later.
+			</div>
+		)}
 	</Section>
 
 	<Section title="// 04 Contact">
