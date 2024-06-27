@@ -59,40 +59,9 @@ const featuredPost = await blog.getFeaturedPost();
 	</Section>
 
 	<Section title="// 04 Contact">
-		<div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-			<div class="flex flex-col items-start">
-				<div class="text-sm">Email</div>
-
-				<div
-					title="Click to copy"
-					onclick={"navigator.clipboard.writeText(this.innerText)"}
-					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-				>
-					{contact.email}
-				</div>
-			</div>
-
-			<div class="flex flex-col items-start">
-				<div class="text-sm">Signal</div>
-				<div
-					title="Click to copy"
-					onclick={"navigator.clipboard.writeText(this.innerText)"}
-					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-				>
-					{contact.signal}
-				</div>
-			</div>
-
-			<div class="flex flex-col items-start">
-				<div class="text-sm">Discord</div>
-				<div
-					title="Click to copy"
-					onclick={"navigator.clipboard.writeText(this.innerText)"}
-					class="flex flex-row items-center gap-2 hover:font-semibold cursor-pointer active:font-normal"
-				>
-					{contact.discord}
-				</div>
-			</div>
-		</div>
+		<p>
+			You can contact wih me using email (<a class="font-semibold" href="mailto:kwasniokpatryk@gmail.com">kwasniokpatryk@gmail.com</a>)
+			or by leaving a message on Discord (<span class="font-semibold">pkwasniok</span>).
+		</p>
 	</Section>
 </RootLayout>
