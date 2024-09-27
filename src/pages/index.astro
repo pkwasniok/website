@@ -7,16 +7,15 @@ import FeaturedPostCard from "@features/blog/FeaturedPostCard.astro";
 
 const links = {
 	upwork: "https://www.upwork.com/freelancers/~013f291d0612995d23?mp_source=share",
+	mastodon: "https://mastodon.social/@pkwasniok",
 	github: "https://github.com/pkwasniok",
 	linkedin: "https://www.linkedin.com/in/patryk-kwa%C5%9Bniok-728614215",
-	twitter: "https://x.com/pkwasniok",
 	youtube: "https://www.youtube.com/@pkwasniok",
 }
 
 const contact = {
 	email: "kwasniokpatryk@gmail.com",
 	discord: "pkwasniok",
-	signal: "pkwasniok.42",
 }
 
 const featuredPost = await blog.getFeaturedPost();
@@ -28,7 +27,7 @@ const featuredPost = await blog.getFeaturedPost();
 			<Shield icon="upwork" href={links.upwork}>Upwork</Shield>
 			<Shield icon="github" href={links.github}>Github</Shield>
 			<Shield icon="linkedin" href={links.linkedin}>Linkedin</Shield>
-			<Shield icon="x" href={links.twitter}>Twitter</Shield>
+			<Shield icon="mastodon" href={links.mastodon}>Mastodon</Shield>
 			<Shield icon="youtube" href={links.youtube}>Youtube</Shield>
 		</div>
 	</Section>
@@ -60,8 +59,8 @@ const featuredPost = await blog.getFeaturedPost();
 
 	<Section title="// 04 Contact">
 		<p>
-			You can contact wih me using email (<a class="font-semibold" href="mailto:kwasniokpatryk@gmail.com">kwasniokpatryk@gmail.com</a>)
-			or by leaving a message on Discord (<span class="font-semibold">pkwasniok</span>).
+			You can contact wih me using email (<a class="font-semibold" href="mailto:kwasniokpatryk@gmail.com">{contact.email}</a>)
+			or by leaving a message on Discord (<span class="font-semibold">{contact.discord}</span>).
 		</p>
 	</Section>
 </RootLayout>
