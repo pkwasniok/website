@@ -1,15 +1,11 @@
-FROM node:lts
+FROM node:22
 
 WORKDIR /app
 
 COPY package.json .
-COPY pnpm-lock.yaml .
+COPY package-lock.json .
 
-RUN apt-get update && apt-get upgrade
+RUN npm install
 
-RUN npm install -g pnpm
-
-RUN pnpm install
-
-CMD ["pnpm", "run", "dev", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev", "--host", "0.0.0.0"]
 
